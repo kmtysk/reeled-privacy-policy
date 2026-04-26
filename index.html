@@ -18,63 +18,162 @@
     p, li { font-size: 0.95em; }
     hr { margin: 3em 0; border: none; border-top: 1px solid #ddd; }
     .lang-label { color: #888; font-size: 0.85em; }
+    .nav { font-size: 0.9em; margin-bottom: 1em; }
+    .nav a { color: #0066cc; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <p class="lang-label">日本語 / Japanese</p>
+  <p class="nav"><a href="terms.html">利用規約はこちら</a></p>
   <h1>プライバシーポリシー</h1>
-  <p>最終更新日：2026年4月5日</p>
+  <p>最終更新日：2026年4月26日</p>
 
-  <p>Reeled（以下「本アプリ」）は、映画・ドラマ・漫画などのコンテンツ消費記録を管理するiOSアプリです。</p>
+  <p>Reeled（以下「本アプリ」）は、映画・ドラマ・漫画などのコンテンツ消費記録を管理するiOSアプリです。本アプリの開発者（以下「開発者」）は、ユーザーのプライバシーを尊重し、以下のとおり個人情報の取り扱いについて定めます。</p>
 
-  <h2>収集する情報</h2>
-  <p>本アプリはユーザーの個人情報を収集しません。すべての記録データはお使いのデバイス内にのみ保存されます。</p>
-
-  <h2>外部サービスの利用</h2>
-  <p>タイトル検索・サムネイル取得のために以下の外部APIを使用します。これらのAPIへはタイトルの検索クエリのみが送信され、個人を特定できる情報は一切送信されません。</p>
+  <h2>本アプリの利用形態</h2>
+  <p>本アプリは2つの利用形態があります。</p>
   <ul>
-    <li>TMDb API（映画・ドラマ情報）</li>
-    <li>AniList API（アニメ情報）</li>
-    <li>楽天Books API（漫画・書籍情報）</li>
+    <li><strong>ローカル利用（サインインなし）</strong>：すべての記録データはお使いのデバイス内にのみ保存され、サーバーへの送信は一切行われません。</li>
+    <li><strong>サーバー同期機能利用（Sign in with Apple でサインイン）</strong>：複数デバイス間でデータを同期するため、後述の情報を開発者のサーバーに送信・保管します。</li>
+  </ul>
+  <p>サインインは任意です。サインインしない場合、以下「収集する情報」「保管場所」等のサーバー関連項目は適用されません。</p>
+
+  <h2>収集する情報（サーバー同期利用時のみ）</h2>
+  <ul>
+    <li><strong>Apple User ID</strong>：Sign in with Apple が発行する匿名識別子（`sub` クレーム）。アカウントの特定に使用します。</li>
+    <li><strong>メールアドレス</strong>：Apple から提供される実メールまたは中継アドレス（`@privaterelay.appleid.com`）。将来の任意通知用に保存しますが、現時点では送信目的では使用しません。</li>
+    <li><strong>視聴記録データ</strong>：本アプリ内で記録した作品タイトル、カテゴリ、視聴日時、評価、メモ、視聴方法、購読中の漫画シリーズなど。</li>
+  </ul>
+  <p>パスワード、決済情報、位置情報、連絡先などは収集しません。</p>
+
+  <h2>利用目的</h2>
+  <ul>
+    <li>複数デバイス間のデータ同期</li>
+    <li>アカウントの認証・管理</li>
+    <li>将来の機能（漫画新刊プッシュ通知など）への対応</li>
   </ul>
 
-  <h2>データの共有</h2>
-  <p>本アプリは第三者にユーザーデータを販売・共有・開示しません。</p>
+  <h2>第三者サービスの利用</h2>
+  <p>本アプリは以下の外部サービスを利用します。</p>
+  <ul>
+    <li><strong>TMDb API</strong>（映画・ドラマ情報）：タイトル検索クエリのみ送信。個人情報は送信しません。</li>
+    <li><strong>AniList API</strong>（アニメ情報）：同上</li>
+    <li><strong>楽天Books API</strong>（漫画・書籍情報）：同上</li>
+    <li><strong>OpenBD API</strong>（書籍ISBN情報）：ISBN コードのみ送信</li>
+    <li><strong>Sentry</strong>（エラー監視）：サーバー同期利用時、サーバー側でエラーが発生した場合に診断情報（スタックトレース、Apple User ID 等）を Sentry に送信します。エラー解析と品質改善のためです。</li>
+  </ul>
 
-  <h2>データの削除</h2>
-  <p>アプリをデバイスから削除することで、すべてのデータが削除されます。</p>
+  <h2>情報の保管場所</h2>
+  <p>収集した情報は、さくらインターネット株式会社が運営するVPSサーバー（東京リージョン）に保管します。日次バックアップは Cloudflare R2 オブジェクトストレージ（アジア太平洋リージョン）に最大30日間保管されます。</p>
+
+  <h2>第三者への提供</h2>
+  <p>収集した情報を第三者に販売・提供することはありません。ただし、法令に基づく開示要請があった場合はこの限りではありません。</p>
+
+  <h2>データの保持期間</h2>
+  <ul>
+    <li>アクティブなアカウント：保管を継続します。</li>
+    <li>アカウント削除時：本体データベースから即時削除されます。</li>
+    <li>バックアップ内のデータ：保持期間（最大30日）の経過をもって自動削除されます。</li>
+    <li>削除されたレコード（記録の単位削除）：90日間ソフトデリート保持後、物理削除されます。</li>
+  </ul>
+
+  <h2>アカウントの削除</h2>
+  <p>アプリ内の設定画面からアカウントを削除できます。削除すると、サーバー上のすべての個人データが即時消去され、復元できません。</p>
+  <p>また、Apple ID の設定から本アプリの連携を解除した場合も、Apple からの通知に基づきアカウントが自動削除されます。</p>
+
+  <h2>データの安全管理</h2>
+  <p>サーバーとの通信はすべて HTTPS（TLS 1.2 以上）で暗号化されます。サーバーへのアクセスは SSH 鍵認証に限定され、認証トークンは業界標準の JWT 方式で管理されます。</p>
+
+  <h2>データ漏洩時の対応</h2>
+  <p>万一、個人情報の漏洩が発生した場合は、個人情報保護委員会への報告（個人情報保護法に基づき72時間以内）と、影響を受けるユーザーへの通知を速やかに行います。漏洩に関する連絡先は下記お問い合わせ先と同じです。</p>
+
+  <h2>Cookie・トラッキング</h2>
+  <p>本アプリは Cookie およびサードパーティトラッキング技術を使用しません。広告も配信していません。</p>
 
   <h2>お問い合わせ</h2>
-  <p>プライバシーに関するご質問は <a href="mailto:yoshiki.kimoto@gmail.com">yoshiki.kimoto@gmail.com</a> までご連絡ください。</p>
+  <p>個人情報の取り扱い、開示・訂正・削除のご依頼、データ漏洩等のご連絡は下記までご連絡ください。</p>
+  <p><a href="mailto:yoshiki.kimoto@gmail.com">yoshiki.kimoto@gmail.com</a></p>
+
+  <h2>プライバシーポリシーの変更</h2>
+  <p>本ポリシーを変更する場合は、本ページを更新します。重要な変更がある場合はアプリ内またはサインイン時にお知らせします。</p>
 
   <hr>
 
   <p class="lang-label">English</p>
+  <p class="nav"><a href="terms.html">View Terms of Service</a></p>
   <h1>Privacy Policy</h1>
-  <p>Last updated: April 5, 2026</p>
+  <p>Last updated: April 26, 2026</p>
 
-  <p>Reeled is an iOS app for tracking your consumption of movies, TV shows, manga, and other content.</p>
+  <p>Reeled is an iOS app for tracking your consumption of movies, TV shows, manga, and other content. The developer of this app ("we", "us") respects your privacy and discloses our practices below.</p>
 
-  <h2>Information We Collect</h2>
-  <p>Reeled does not collect any personal information. All record data is stored locally on your device only.</p>
-
-  <h2>Third-Party Services</h2>
-  <p>The app uses the following external APIs to search for titles and fetch thumbnails. Only search query text is sent to these services. No personally identifiable information is transmitted.</p>
+  <h2>Two Modes of Use</h2>
+  <p>Reeled can be used in two ways:</p>
   <ul>
-    <li>TMDb API (movies &amp; TV shows)</li>
-    <li>AniList API (anime)</li>
-    <li>Rakuten Books API (manga &amp; books)</li>
+    <li><strong>Local-only (no sign-in)</strong>: All record data is stored locally on your device. Nothing is transmitted to our server.</li>
+    <li><strong>Server sync (Sign in with Apple)</strong>: To sync data across devices, we transmit and store the data described below on our server.</li>
+  </ul>
+  <p>Signing in is optional. Without sign-in, none of the server-related items below apply.</p>
+
+  <h2>Information We Collect (server sync only)</h2>
+  <ul>
+    <li><strong>Apple User ID</strong>: An anonymous identifier (the `sub` claim) issued by Sign in with Apple, used to identify your account.</li>
+    <li><strong>Email address</strong>: Either your real email or a relay address (`@privaterelay.appleid.com`) provided by Apple. We store it for potential future notifications but do not currently send any.</li>
+    <li><strong>Viewing records</strong>: Titles, categories, watch dates, ratings, memos, viewing methods, manga subscription targets, etc., that you record in the app.</li>
+  </ul>
+  <p>We do not collect passwords, payment information, location, or contacts.</p>
+
+  <h2>Purpose</h2>
+  <ul>
+    <li>Synchronizing data across your devices</li>
+    <li>Account authentication and management</li>
+    <li>Future features (e.g., push notifications for new manga volumes)</li>
   </ul>
 
-  <h2>Data Sharing</h2>
-  <p>We do not sell, share, or disclose user data to any third parties.</p>
+  <h2>Third-Party Services</h2>
+  <p>The app uses the following external services:</p>
+  <ul>
+    <li><strong>TMDb API</strong> (movies &amp; TV): only search query text is sent</li>
+    <li><strong>AniList API</strong> (anime): same as above</li>
+    <li><strong>Rakuten Books API</strong> (manga &amp; books): same as above</li>
+    <li><strong>OpenBD API</strong> (book ISBN data): only ISBN code is sent</li>
+    <li><strong>Sentry</strong> (error monitoring): When server sync is used, we send diagnostic information (stack traces, Apple User ID) to Sentry if errors occur on our server, to aid debugging and improve quality.</li>
+  </ul>
 
-  <h2>Data Deletion</h2>
-  <p>Deleting the app from your device will remove all associated data.</p>
+  <h2>Where Data Is Stored</h2>
+  <p>Collected data is stored on a VPS server operated by Sakura Internet Inc., located in their Tokyo region. Daily backups are stored on Cloudflare R2 (Asia-Pacific region) for up to 30 days.</p>
+
+  <h2>Third-Party Disclosure</h2>
+  <p>We do not sell or disclose your data to third parties, except where required by law.</p>
+
+  <h2>Data Retention</h2>
+  <ul>
+    <li>Active accounts: data is retained while the account is active.</li>
+    <li>Account deletion: data is removed from the primary database immediately.</li>
+    <li>Backups: data in backups is automatically removed after the retention window (up to 30 days).</li>
+    <li>Deleted records: kept as soft-deleted for 90 days, then physically purged.</li>
+  </ul>
+
+  <h2>Account Deletion</h2>
+  <p>You can delete your account from the in-app settings. Deletion removes all personal data from our server immediately and is irreversible.</p>
+  <p>Disconnecting Reeled in your Apple ID settings will also trigger automatic account deletion based on Apple's revoke notification.</p>
+
+  <h2>Security</h2>
+  <p>All communication with our server is encrypted via HTTPS (TLS 1.2 or higher). Server access is restricted to SSH key authentication, and session tokens follow the standard JWT scheme.</p>
+
+  <h2>Data Breach Response</h2>
+  <p>In the unlikely event of a personal data breach, we will report to the Personal Information Protection Commission of Japan within 72 hours as required by law, and promptly notify affected users. Inquiries regarding breaches use the same contact below.</p>
+
+  <h2>Cookies and Tracking</h2>
+  <p>This app does not use cookies or third-party tracking technologies. We do not display ads.</p>
 
   <h2>Contact</h2>
-  <p>For privacy-related questions, please contact <a href="mailto:yoshiki.kimoto@gmail.com">yoshiki.kimoto@gmail.com</a>.</p>
+  <p>For privacy-related questions, requests for disclosure / correction / deletion, or breach notifications, please contact:</p>
+  <p><a href="mailto:yoshiki.kimoto@gmail.com">yoshiki.kimoto@gmail.com</a></p>
+
+  <h2>Changes to This Policy</h2>
+  <p>If this policy changes, we will update this page. Significant changes will be communicated within the app or at sign-in.</p>
 
 </body>
 </html>
